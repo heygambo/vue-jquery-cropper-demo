@@ -17,10 +17,9 @@ export default {
   },
 
   createCropper () {
-    const vm = this.vm
     const options = JSON.parse(JSON.stringify(this.params))
-    options.crop = function crop (event) {
-      vm.$emit('crop', event)
+    options.crop = (event) => {
+      this.vm.$emit('crop', event)
     }
     jQuery(this.el).cropper('destroy')
     setTimeout(() => {
