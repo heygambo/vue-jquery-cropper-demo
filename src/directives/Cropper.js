@@ -29,6 +29,10 @@ export default {
 
   bind () {
     this.createCropper()
+    this.vm.$on('rotate', (deg) => {
+      console.log('rotate!', deg)
+      jQuery(this.el).cropper('rotate', deg)
+    })
   },
 
   update () {
@@ -37,5 +41,6 @@ export default {
 
   unbind () {
     jQuery(this.el).cropper('destroy')
+    this.vm.$off('rotate')
   }
 }

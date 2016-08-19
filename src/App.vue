@@ -34,6 +34,9 @@
         <input type="checkbox" v-model="cropParams.zoomable">
         <label for="zoomable">Zoomable?</label>
       </div>
+      <div class="actions">
+        <button @click="$emit('rotate', 90)">Rotate 90°</button>
+      </div>
       <img
         v-cropper
         :view-mode="cropParams.viewMode"
