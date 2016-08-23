@@ -2,22 +2,9 @@ import jQuery from 'jquery'
 import 'cropper'
 
 export default {
-  params: [
-    'viewMode',
-    'zoomable'
-  ],
+  deep: true,
 
-  paramWatchers: {
-    viewMode (val) {
-      this.createCropper()
-    },
-    zoomable (val) {
-      this.createCropper()
-    }
-  },
-
-  createCropper () {
-    const options = JSON.parse(JSON.stringify(this.params))
+  createCropper (options) {
     options.crop = (event) => {
       this.vm.$emit('crop', event)
     }
@@ -28,14 +15,13 @@ export default {
   },
 
   bind () {
-    this.createCropper()
     this.vm.$on('rotate', (deg) => {
       jQuery(this.el).cropper('rotate', deg)
     })
   },
 
-  update () {
-    this.createCropper()
+  update (options) {
+    this.createCropper(options)
   },
 
   unbind () {

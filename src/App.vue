@@ -7,40 +7,38 @@
         <div class="view-modes">
           <button
             class="view-mode"
-            v-bind="{disabled: cropParams.viewMode === 0}"
-            @click="cropParams.viewMode = 0">
+            v-bind="{disabled: cropOptions.viewMode === 0}"
+            @click="cropOptions.viewMode = 0">
             View Mode 1
           </button>
           <button
             class="view-mode"
-            v-bind="{disabled: cropParams.viewMode === 1}"
-            @click="cropParams.viewMode = 1">
+            v-bind="{disabled: cropOptions.viewMode === 1}"
+            @click="cropOptions.viewMode = 1">
             View Mode 2
           </button>
           <button
             class="view-mode"
-            v-bind="{disabled: cropParams.viewMode === 2}"
-            @click="cropParams.viewMode = 2">
+            v-bind="{disabled: cropOptions.viewMode === 2}"
+            @click="cropOptions.viewMode = 2">
             View Mode 3
           </button>
           <button
             class="view-mode"
-            v-bind="{disabled: cropParams.viewMode === 3}"
-            @click="cropParams.viewMode = 3">
+            v-bind="{disabled: cropOptions.viewMode === 3}"
+            @click="cropOptions.viewMode = 3">
             View Mode 4
           </button>
         </div>
         
-        <input type="checkbox" v-model="cropParams.zoomable">
+        <input type="checkbox" v-model="cropOptions.zoomable">
         <label for="zoomable">Zoomable?</label>
       </div>
       <div class="actions">
         <button @click="$emit('rotate', 90)">Rotate 90°</button>
       </div>
       <img
-        v-cropper
-        :view-mode="cropParams.viewMode"
-        :zoomable="cropParams.zoomable"
+        v-cropper="cropOptions"
         src="assets/mustache.jpg"
         alt="Mustache">
       <pre id="output">
@@ -69,7 +67,7 @@ export default {
   data () {
     return {
       cropData: {},
-      cropParams: {
+      cropOptions: {
         viewMode: 0,
         zoomable: false
       },
