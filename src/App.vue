@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <p>jQuery Cropper &amp; Vue Demonstration</p>
+    <h1>jQuery Cropper &amp; Vue Demonstration</h1>
     <button id="toggle" @click="toggleCropper">Toggle Cropper</button>
     <div v-if="showCropper">
       <div id="options">
-        <div class="view-modes">
+        <h3>Options</h3>
+        <div id="view-modes">
           <button
             class="view-mode"
             v-bind="{disabled: cropOptions.viewMode === 0}"
@@ -34,7 +35,8 @@
         <input type="checkbox" v-model="cropOptions.zoomable">
         <label for="zoomable">Zoomable?</label>
       </div>
-      <div class="actions">
+      <div id="actions">
+        <h3>Actions</h3>
         <button @click="$emit('rotate', 90)">Rotate 90°</button>
       </div>
       <img
@@ -96,13 +98,14 @@ export default {
 
 <style>
 html {
-  height: 100%;
+  height: auto;
 }
 
 body {
   display: flex;
   justify-content: center;
-  height: 100%;
+  height: auto;
+  padding-bottom: 50px;
 }
 
 #app {
@@ -132,6 +135,14 @@ img {
 }
 
 #options {
+  margin-bottom: 20px;
+}
+
+#view-modes {
+  margin-bottom: 20px;
+}
+
+#actions {
   margin-bottom: 20px;
 }
 
